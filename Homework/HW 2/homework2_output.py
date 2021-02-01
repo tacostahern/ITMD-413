@@ -183,16 +183,22 @@ Year  60
 USA Population:  238597371
 Mexico Population:  240219528
 Number of years it took for Mexico's population to overtake USA: 60 years
-What color are the status lights? Enter Green, Red, or Amber: Red
-Shut off all input lines and check meter #3
-What is the value in meter #3? 
-= RESTART: C:\Users\tacos\Documents\ITMD-413\Homework\HW 2\homework2_source_code.py
 What color are the status lights? Enter Green, Red, or Amber: Green
 Do restart procedure
 >>> 
 = RESTART: C:\Users\tacos\Documents\ITMD-413\Homework\HW 2\homework2_source_code.py
-What color are the status lights? Enter Green, Red, or Amber: Greeen
+What color are the status lights? Enter Green, Red, or Amber: Amber
+Check fuel line service routine
+>>> 
+= RESTART: C:\Users\tacos\Documents\ITMD-413\Homework\HW 2\homework2_source_code.py
+What color are the status lights? Enter Green, Red, or Amber: amber
 That is not a valid light status color!
+>>> 
+= RESTART: C:\Users\tacos\Documents\ITMD-413\Homework\HW 2\homework2_source_code.py
+What color are the status lights? Enter Green, Red, or Amber: Red
+Shut off all input lines and check meter #3
+What is the value in meter #3? 51x
+That is not a valid flow velocity!
 >>> 
 = RESTART: C:\Users\tacos\Documents\ITMD-413\Homework\HW 2\homework2_source_code.py
 What color are the status lights? Enter Green, Red, or Amber: Red
@@ -247,14 +253,14 @@ What color are the status lights? Enter Green, Red, or Amber: Red
 Shut off all input lines and check meter #3
 What is the value in meter #3? 49
 Check main line for test pressure
-What is the test pressure? Enter High, Normal, or Low: Normal
-Refer to motor service manual
+What is the test pressure? Enter High, Normal, or Low: Normal.3
+That is not a valid test pressure!
 >>> 
 = RESTART: C:\Users\tacos\Documents\ITMD-413\Homework\HW 2\homework2_source_code.py
 What color are the status lights? Enter Green, Red, or Amber: Red
 Shut off all input lines and check meter #3
 What is the value in meter #3? 49
 Check main line for test pressure
-What is the test pressure? Enter High, Normal, or Low: ow
-That is not a valid test pressure!
+What is the test pressure? Enter High, Normal, or Low: Normal
+Refer to motor service manual
 >>> 

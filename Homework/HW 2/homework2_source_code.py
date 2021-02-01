@@ -18,7 +18,7 @@ usaPopRate = 0.53
 mexicoPop = 127600000
 mexicoPopRate = 1.06
 counter = 0;
-'''
+
 while usaPop > mexicoPop:
     usaPop = usaPop - (usaPop * .0053)
     mexicoPop = mexicoPop + (mexicoPop * .0106)
@@ -28,7 +28,7 @@ while usaPop > mexicoPop:
     print("Mexico Population: ", format(mexicoPop, '.0f'))
 
 print("Number of years it took for Mexico's population to overtake USA:", counter, "years")
-'''
+
 # Start of second problem
 lightStatus = input("What color are the status lights? Enter Green, Red, or Amber: ")
 

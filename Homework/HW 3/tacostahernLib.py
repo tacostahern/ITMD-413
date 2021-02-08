@@ -7,11 +7,10 @@ respectively. The next two functions will be used to calculate retail prices fro
 '''
 
 import math # for using pi value
-def r2d(radians):
-    return radians * (180 / math.pi)
 
-def d2r(degrees):
-    return degrees * (math.pi / 180)
+r2d = lambda radians: radians * (180 / math.pi) #lambda function. returns converted degrees value
+
+d2r = lambda degrees: degrees * (math.pi / 180) #lambda function. returns converted radians value
 print()
 #Testing purposes
 #print(r2d(1)) 
@@ -28,8 +27,7 @@ def getCost(markUp):
     # Display the retail price.
     print('Retail price: $', format(calcRetailPrice(wholesale, markUp), ',.2f'))
 
-def calcRetailPrice(cost, markUp): #returns the retail price, called in getCost()
-    return cost + (cost * markUp)
+calcRetailPrice = lambda cost, markUp: cost + (cost * markUp) #returns the retail price, called in getCost()
     
     
     

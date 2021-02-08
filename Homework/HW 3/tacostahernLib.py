@@ -29,7 +29,7 @@ def getCost(markUp):
     print('Retail price: $', format(calcRetailPrice(wholesale, markUp), ',.2f'))
 
 def calcRetailPrice(cost, markUp): #returns the retail price, called in getCost()
-    return cost * markUp
+    return cost + (cost * markUp)
     
     
     

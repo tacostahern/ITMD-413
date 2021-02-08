@@ -14,7 +14,7 @@ print("The value of", radians, "radians in degrees is", r2d(radians))
 degrees = eval(input("Please enter a degrees value to convert to radians: "))
 print("The value of", degrees, "degrees in radians is", d2r(degrees))
 
-markUp = 2.5 #Markup percentage
+markUp = .025 #Markup percentage
 repeat = 'y'
 
 #process on or more items

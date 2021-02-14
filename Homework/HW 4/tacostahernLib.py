@@ -8,6 +8,8 @@ respectively. The next two functions will be used to calculate retail prices fro
 For HW 4, there will be functions for use in the first problem; first, a function to take in input from the
 user, save it into a list, and then return that list. Second, a function used to sum up the total of that list
 and apply a sales tax. Functions will also be made to get the subtotal price, final cost, and print out each item
+The next problem will have one function, multiplyMatrix, which will take in two lists with 9 values each and get
+the product of both matrices.
 '''
 
 import math # for using pi value

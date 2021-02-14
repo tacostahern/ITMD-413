@@ -51,6 +51,9 @@ for i in range(0, 3): #For creating a list with 3 lists in it, like the rows in 
         subList.append(num)
     b.append(subList)
 
-print(multiplyMatrix(a, b))
+print("Matrix A:", a)
+print("Matrix B:", b)
+
+print("Their product:", multiplyMatrix(a, b))
 
 

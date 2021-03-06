@@ -17,7 +17,35 @@ tell if the phone numbers are valid based on the input.
 import re, os
 
 def main():
-    pass
+    file = readFile()
+    infoLine = getInfo(file)
+
+    #for i in infoLine:
+        #print(i)
+
+    for i in infoLine:
+        temp = i.split(":")
+        print("dn:", temp[0] + ",", "dc=gmail, dc=com")
+        print("cn:", temp[1], temp[2])
+        print("sn:", temp[2])
+        print("telephoneNumber:", temp[3])
 
 def readFile():
-    pass
+    file = "information.txt"
+
+    if os.path.isfile(file):
+        infile = open(file, "r")
+        return infile
+
+def getInfo(infile):
+    infoLine = list()
+
+    dataLine = infile.readline()
+
+    while dataLine != "":
+        infoLine.append(dataLine)
+        dataLine = infile.readline()
+
+    return infoLine
+
+main()

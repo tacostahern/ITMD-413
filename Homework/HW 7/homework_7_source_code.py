@@ -52,29 +52,38 @@ def getInfo(infile): #This method takes our readable file and saves the data in 
     return infoLine
 
 def phoneNumber(): #This method solves question 2
-    pattern = re.compile(r'''(
-        (\()?
-        (\d{3})
-        (\s|\)|-|\)\s)?
-        (\d{3})
-        (\s|-)?
-        (\d{4})
-        )''', re.VERBOSE)
+    
     #pattern = re.compile(r'\d\d\d.\d\d\d.\d\d\d\d')
 
-    userInput = input("Please enter the phone number ")
+    goAgain = input("Please enter 'Y' to enter a phone number, or enter anything else to stop: ")
 
-    match = re.fullmatch(pattern, userInput)
-    if match != "None":
-        pnList = list(userInput)
-        for i in userInput:
-            if i.isdigit() == False:
-                pnList.remove(i)
-        
-        print("The formatted number is (" + pnList[0] + pnList[1] + pnList[2] + 
-        ")", pnList[3] + pnList[4] + pnList[5], 
-        pnList[6] + pnList[7] + pnList[8] + pnList[9])
-        
-    else:
-        print("That is not a valid phone number")
+    while goAgain.lower() == 'y':
+
+        pattern = re.compile(r'''(
+        (\()? #Optional first opening parenthesis for area code
+        (\d{3}) #should be 3 digits for area code
+        (\s|\)|-|\)\s)? #The next symbol can be a space, closing parenthesis, hypen, or parenthesis with space
+        (\d{3})#Need 3 digits for the rest of the number
+        (\s|-)?#There can be another optional space or hypen
+        (\d{4})#Final four digits of number
+        )''', re.VERBOSE)
+        userInput = input("Please enter the phone number: ")
+
+        match = re.fullmatch(pattern, userInput) #Matches the full entered string to our pattern
+        if match != None: #If we do get a match
+            pnList = list(userInput)#We convert the string to a list, so we can format it more easily
+            for i in userInput:
+                if i.isdigit() == False:#remove non digit characters from the number
+                    pnList.remove(i)
+            
+            print("The formatted number is (" + pnList[0] + pnList[1] + pnList[2] +  #Used to format the number simply
+            ")", pnList[3] + pnList[4] + pnList[5], 
+            pnList[6] + pnList[7] + pnList[8] + pnList[9])
+            
+        else:
+            print("That is not a valid phone number")
+
+        goAgain = input("Please enter 'Y' to enter a phone number, or enter anything else to stop: ")
+
+    
 main()

@@ -26,10 +26,12 @@ E) Display the following Descriptive statistics of students' overall percentage 
 F) Determine how many students achieved an A grade, B, C, D, and F grades
 G) Create a pie chart based on the above grade achievements
 '''
-import numpy as np
+import os, numpy as np, pandas as pd
+from scipy import stats
 
 def main():
     q1()
+    q2()
 
 def q1():
     array = np.arange(1, 16, 1)
@@ -43,9 +45,54 @@ def q1():
     print("All elements from rows 1 and 2 that are in columns 0, 2, and 4:\n", array[1:3, [0, 2, 4]])
 
 def q2():
-    pass
+    #data = pd.read_csv("Student_Grades.csv")
+    #print(data.to_string())
 
-def readFile():
-    pass
+    #A) Display all data on screen
+    data = np.loadtxt(open("Student_Grades.csv", "r"), delimiter = ",", skiprows=1) #Take in data into a numpy array
+    print(data)
+
+    #B) Determine how many students were in dataset
+    numRows, numColumns = data.shape
+    print("Number of students in dataset:", numRows)
+
+    #C) Display the number of rows and columns of your numpy array
+    print("Number of rows in dataset:", numRows)
+    print("Number of columns in dataset:", numColumns)
+
+    #D) Display the array data types
+    print("The array data types are:", data.dtype)
+
+    #Display the following Descriptive statistics of students' overall percentage scores:
+
+    percentages = np.array(data[:, 31])
+    #a. Min score
+    print("Minimum score:", percentages.min())
+
+    #b. Max score
+    print("Maximum score:", percentages.max())
+
+    #c. Mean value
+    print("Mean value:", percentages.mean())
+
+    #d. Median
+    print("Median:", np.median(percentages))
+
+    #e. Mode
+    print("Mode:", stats.mode(percentages))
+
+    #f. Standard Deviation
+    print("Standard Deviation:", percentages.std())
+
+    #g. 25% and 75% percentile
+    print("25% percentile:", np.percentile(percentages, 25))
+    print("75% percentile:", np.percentile(percentages, 75))
+
+    #F) Determine how many students achieved an A grade, B, C, D, and F grades
+    print("Number of students with an A:", len(percentages[percentages >= 90]))
+    print("Number of students with a B:", len(percentages[np.logical_and(percentages >= 80, percentages <= 89)]))
+    print("Number of students with a C:", len(percentages[np.logical_and(percentages >= 70, percentages <= 79)]))
+    print("Number of students with a D:", len(percentages[np.logical_and(percentages >= 60, percentages <= 69)]))
+    print("Number of students with an F:", len(percentages[percentages <= 59]))
 
 main()

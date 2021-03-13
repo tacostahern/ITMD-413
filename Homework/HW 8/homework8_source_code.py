@@ -26,7 +26,7 @@ E) Display the following Descriptive statistics of students' overall percentage 
 F) Determine how many students achieved an A grade, B, C, D, and F grades
 G) Create a pie chart based on the above grade achievements
 '''
-import os, numpy as np, pandas as pd
+import os, numpy as np, pandas as pd, matplotlib.pyplot as plt
 from scipy import stats
 
 def main():
@@ -90,9 +90,16 @@ def q2():
 
     #F) Determine how many students achieved an A grade, B, C, D, and F grades
     print("Number of students with an A:", len(percentages[percentages >= 90]))
-    print("Number of students with a B:", len(percentages[np.logical_and(percentages >= 80, percentages <= 89)]))
-    print("Number of students with a C:", len(percentages[np.logical_and(percentages >= 70, percentages <= 79)]))
-    print("Number of students with a D:", len(percentages[np.logical_and(percentages >= 60, percentages <= 69)]))
+    print("Number of students with a B:", len(percentages[np.logical_and(percentages >= 80, percentages < 90)]))
+    print("Number of students with a C:", len(percentages[np.logical_and(percentages >= 70, percentages < 80)]))
+    print("Number of students with a D:", len(percentages[np.logical_and(percentages >= 60, percentages < 70)]))
     print("Number of students with an F:", len(percentages[percentages <= 59]))
+
+    numGrades = [len(percentages[percentages >= 90]), len(percentages[np.logical_and(percentages >= 80, percentages < 90)]), len(percentages[np.logical_and(percentages >= 70, percentages < 80)]), len(percentages[np.logical_and(percentages >= 60, percentages < 70)]), len(percentages[percentages <= 59])]
+    gradeLetters = ["A", "B", "C", "D", "F"]
+
+    plt.pie(numGrades, labels = gradeLetters, autopct = '%1.1f%%')
+    plt.title("Student Performance Pie Chart")
+    plt.show()
 
 main()

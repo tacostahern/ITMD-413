@@ -34,7 +34,7 @@ def main():
     q2()
 
 def q1():
-    array = np.arange(1, 16, 1)
+    array = np.arange(1, 16, 1) #Make a NumPy array of length 15, with values 1 - 15
     array = np.reshape(array, (3, 5))
     print(array) #Print array, for testing purposes
     print("Row 2 of array:", array[1:2]) #Selecting row 2

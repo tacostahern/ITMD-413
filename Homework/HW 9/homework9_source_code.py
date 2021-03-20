@@ -42,9 +42,10 @@ The second question involves the titanic.csv dataset, in which we will create a 
 import pandas as pd, numpy as np
 
 def main():
-    q1()
+    q1part1()
+    q1part2()
 
-def q1():
+def q1part1():
     a = pd.Series([7, 11, 13, 17]) #Answer to a
     b = pd.Series([100.0, 100.0, 100.0, 100.0, 100.0]) #Answer to b
     c = pd.Series(np.random.randint(101, size = 20)) #Answer to c, along with the line below it
@@ -58,5 +59,8 @@ def q1():
         'Andrea': 97.9
     }
     e = pd.Series(dictionary)
+
+def q1part2():
+    pass
 
 main()

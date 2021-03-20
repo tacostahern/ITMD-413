@@ -39,3 +39,24 @@ The second question involves the titanic.csv dataset, in which we will create a 
     f) What was the youngest age that survived, and the oldest age? What were their names.
     g) Display the name of all passengers that survived.
 '''
+import pandas as pd, numpy as np
+
+def main():
+    q1()
+
+def q1():
+    a = pd.Series([7, 11, 13, 17]) #Answer to a
+    b = pd.Series([100.0, 100.0, 100.0, 100.0, 100.0]) #Answer to b
+    c = pd.Series(np.random.randint(101, size = 20)) #Answer to c, along with the line below it
+    print(c.describe())
+    temperatures = pd.Series([98.6, 98.9, 100.2, 97.9], index = ['Julie', 'Charlie', 'Sam', 'Andrea']) #Answer to d
+    #Answer to e is as follows:s
+    dictionary = {
+        'Julie': 98.6,
+        'Charlie': 98.9,
+        'Sam': 100.2,
+        'Andrea': 97.9
+    }
+    e = pd.Series(dictionary)
+
+main()

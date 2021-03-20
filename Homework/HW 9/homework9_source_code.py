@@ -14,7 +14,7 @@ using the pandas library as well as functions performed on them based on the fol
     e. Form a dictionary from the names and values in Part (d), then use it to initialize 
     a Series.
 Second, the creation of several dataframes using the pandas library as well as the functions performed on them based on the following tasks:
-    Create a DataFrame named temperatures from a dictionary of three temperature 
+    f. Create a DataFrame named temperatures from a dictionary of three temperature 
     readings each for 'Maxine', 'James' and 'Amanda'.
     g. Recreate the DataFrame temperatures in Part (a) with custom indices using 
     the index keyword argument and a list 
@@ -61,6 +61,32 @@ def q1part1():
     e = pd.Series(dictionary)
 
 def q1part2():
-    pass
+    #Answer to f as follows:
+    dictionary = {
+        'Maxine': [98.9, 96.8, 98.6],
+        'James': [68.7, 99.1, 86.3],
+        'Amanda': [100.3, 103.5, 93.9]
+    }
+
+    temperatures = pd.DataFrame.from_dict(dictionary)
+    temperatures = pd.DataFrame(dictionary, index= ['Morning', 'Afternoon', 'Evening']) #Answer to g
+    #print(temperatures)
+    MaxineTemps = temperatures['Maxine'] #Answer to h
+    print(MaxineTemps)
+    morningTemps = temperatures.loc[['Morning'], :] #Answer to i
+    print(morningTemps)
+    mornEveTemps = temperatures.loc[['Morning', 'Evening'], :] #Answer to j
+    print(mornEveTemps)
+    amandaMaxineTemps = temperatures.loc[:, ['Amanda', 'Maxine']] #Answer to k
+    print(amandaMaxineTemps)
+    amandaMaxineMornNoonTemps = temperatures.loc[['Morning', 'Afternoon'], ['Amanda', 'Maxine']] #Answer to l
+    print(amandaMaxineMornNoonTemps)
+    print(temperatures.describe()) #Answer to m
+    transposedTemp = temperatures.T #Answer to n
+    print(transposedTemp)
+    temperatures = temperatures.reindex(sorted(temperatures.columns), axis = 1) #Answer to o
+    print(temperatures)
+    
+
 
 main()

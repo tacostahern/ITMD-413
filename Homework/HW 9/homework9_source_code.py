@@ -44,6 +44,7 @@ import pandas as pd, numpy as np
 def main():
     q1part1()
     q1part2()
+    q2()
 
 def q1part1():
     a = pd.Series([7, 11, 13, 17]) #Answer to a
@@ -87,6 +88,7 @@ def q1part2():
     temperatures = temperatures.reindex(sorted(temperatures.columns), axis = 1) #Answer to o
     print(temperatures)
     
-
+def q2():
+    pass
 
 main()

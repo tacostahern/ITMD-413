@@ -89,6 +89,46 @@ def q1part2():
     print(temperatures)
     
 def q2():
-    pass
+    data = pd.read_csv('titanic.csv')
+    df = pd.DataFrame(data)
+    print("Number of passengers:", df.shape[0]) #Answer to a
+    numMen = len(df.loc[df['sex'] == 'male'])
+    numWomen = len(df.loc[df['sex'] == 'female'])
+    #Answer to b
+    print("Number of male passengers:", numMen)
+    print("Number of female passengers:", numWomen)
+    #Answer to c
+    averageAge = df.loc[1:, ['age']].mean()
+    print("Average age among passengers:", averageAge)
+    #Answer to d
+    under21 = len(df.loc[df['age'] < 21])
+    print("Number of passengers under 21:", under21)
+    #Answer to e
+    survived = df.loc[df['survived'] == 'yes']
+    notSoLucky = df.loc[df['survived'] == 'no']
+    numSurvived = len(survived)
+    numNotSoLucky = len(notSoLucky)
+    menSurvived = len(survived.loc[survived['sex'] == 'male'])
+    womenSurvived = len(survived.loc[survived['sex'] == 'female'])
+    menNotSoLucky = len(notSoLucky.loc[notSoLucky['sex'] == 'male'])
+    womenNotSoLucky = len(notSoLucky.loc[notSoLucky['sex'] == 'female'])
+    print("Number of passengers that survived:", numSurvived)
+    print("Number of passengers that perished:", numNotSoLucky)
+    print("Number of men that survived:", menSurvived)
+    print("Number of women that survived:", womenSurvived)
+    print("Number of men that perished:", menNotSoLucky)
+    print("Number of women that perished:", womenNotSoLucky)
+    #Answer to f
+    youngestSurvived = survived.loc[1:, ['age']].min()
+    youngestName = survived.loc[survived['age'] == float(youngestSurvived), ['Name']]
+    oldestSurvived = survived.loc[1:, ['age']].max()
+    oldestName = survived.loc[survived['age'] == float(oldestSurvived), ['Name']]
+    print("Name of the youngest survivor:", youngestName['Name'])
+    print("Age of the youngest survivor:", youngestSurvived)
+    print("Name of the oldest survivor:", oldestName['Name'])
+    print("Age of the oldest survivor:", oldestSurvived)
+    #Answer to g
+    survivedNames = survived.loc[1:, ['Name']]
+    print("Names of the survivors:", survivedNames)
 
 main()

@@ -1,7 +1,15 @@
 '''
 Program Author: Tony Acosta Hernandez
 Course: ITMD 413
-Program Description: 
+Program Description: This program will utilize the pickle library and dictionaries to record, retrieve, and edit company records
+consisting of a User's name and email. The program will offer users a menu with options to choose from, which includes:
+    1) Add a new name and email address.
+    2. Find an existing email address from a name.
+    3. Change an existing email address.
+    4. Delete an existing name and email address.
+    5. Exit the program
+The program itself will run continously until option 5 is chosen. At the start and end of the program, the information will be
+unbinded and binded into a text file, respectively.
 '''
 
 import pickle, os

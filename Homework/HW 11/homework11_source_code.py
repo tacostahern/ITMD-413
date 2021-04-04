@@ -56,7 +56,6 @@ def main():
     flightsData = pd.read_csv('flightsData.csv')
 
     yearlyPassengers = flightsData.groupby('year').sum() #For getting total number of passengers per year
-    print(yearlyPassengers)
     ax = sns.lineplot(data = flightsData, x = 'year', y = 'passengers')
     ax = sns.lineplot(data = yearlyPassengers, x = 'year', y = 'passengers')
     ax.set(xlabel = 'Year', ylabel = 'Passengers')
@@ -64,5 +63,7 @@ def main():
     plt.show()
 
     #Part f answer
-    titanicData = pd.read_csv('titanic.csv')
+    titanicData = sns.load_dataset('titanic')
+    ax = sns.catplot(x = 'class', hue = 'who', col = 'survived', data = titanicData, kind = 'count', height = 4, aspect = .7)
+    plt.show()
 main()

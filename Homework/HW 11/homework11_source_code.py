@@ -21,4 +21,29 @@ problems:
     f) Using dataset titanic.csv, show the counts of observations in each categorical bin using 
     bars plot.
 '''
+import matplotlib.pyplot as plt, seaborn as sns, pandas as pd
 
+def main():
+    workerTips = pd.read_csv('workerstips.csv')
+    workerTipsDF = pd.DataFrame(workerTips)
+    #Part a answer
+    ax = sns.relplot(x = 'total_bill', y = 'tip', data = workerTips)
+    ax.set(xlabel = 'Total Bill', ylabel = 'Tips')
+    ax.fig.subplots_adjust(top = .95) #For fixing title getting cut off issue
+    plt.title('Graph for Part a')
+    plt.show()
+
+    #Part b answer
+    ax = sns.relplot(x = 'total_bill', y = 'tip', hue = 'smoker', size = 'size', style = 'smoker',  data = workerTips, sizes = (30, 100))
+    ax.set(xlabel = 'Total Bill', ylabel = 'Tips')
+    ax.fig.subplots_adjust(top = .95) #For fixing title getting cut off issue
+    plt.title('Graph for Part b')
+    plt.show()
+
+    #Part c answer
+    ax = sns.barplot(x = 'day', y = 'tip', data = workerTips, order = ['Thur', 'Fri', 'Sat', 'Sun'])
+    ax.set(xlabel = 'Day of the Week', ylabel = 'Average Tips')
+    #ax.fig.subplots_adjust(top = .95) #For fixing title getting cut off issue
+    plt.title('Graph for Part c')
+    plt.show()
+main()

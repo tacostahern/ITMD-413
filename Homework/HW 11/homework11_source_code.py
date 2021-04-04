@@ -25,7 +25,6 @@ import matplotlib.pyplot as plt, seaborn as sns, pandas as pd
 
 def main():
     workerTips = pd.read_csv('workerstips.csv')
-    workerTipsDF = pd.DataFrame(workerTips)
     #Part a answer
     ax = sns.relplot(x = 'total_bill', y = 'tip', data = workerTips)
     ax.set(xlabel = 'Total Bill', ylabel = 'Tips')
@@ -43,7 +42,27 @@ def main():
     #Part c answer
     ax = sns.barplot(x = 'day', y = 'tip', data = workerTips, order = ['Thur', 'Fri', 'Sat', 'Sun'])
     ax.set(xlabel = 'Day of the Week', ylabel = 'Average Tips')
-    #ax.fig.subplots_adjust(top = .95) #For fixing title getting cut off issue
     plt.title('Graph for Part c')
     plt.show()
+
+    #Part d answer
+    ax = sns.boxplot(x = "day", y = "total_bill", hue = "time", data = workerTips, order = ['Thur', 'Fri', 'Sat', 'Sun'], hue_order = ['Lunch', 'Dinner'])
+    ax.set(xlabel = 'Day of the Week', ylabel = 'Average Tips')
+    plt.title('Graph for Part d')
+    plt.show()
+    #The above graph shows us that most of the tips for lunch and dinner are around the same range for Thursday through Friday, with Sunday having the largest distribution of tips.
+
+    #Part e answer
+    flightsData = pd.read_csv('flightsData.csv')
+
+    yearlyPassengers = flightsData.groupby('year').sum() #For getting total number of passengers per year
+    print(yearlyPassengers)
+    ax = sns.lineplot(data = flightsData, x = 'year', y = 'passengers')
+    ax = sns.lineplot(data = yearlyPassengers, x = 'year', y = 'passengers')
+    ax.set(xlabel = 'Year', ylabel = 'Passengers')
+    plt.title('Graph for Part e')
+    plt.show()
+
+    #Part f answer
+    titanicData = pd.read_csv('titanic.csv')
 main()

@@ -30,10 +30,11 @@ class GroceryStore(Store):
         self.__grocery_store_type = grocery_store_type
 
     def sell_item(self, quantity, price):
-        setTotalRevenue(getTotalRevenue() + (quantity * price))
+        GroceryStore.setTotalRevenue(self, GroceryStore.getTotalRevenue(self) + (quantity * price))
+        return GroceryStore.getTotalRevenue(self)
 
     def calculate_total_sales_tax(self):
-        return(getTotalRevenue() * Store.getSalesTaxPercentage())
+        return(GroceryStore.getTotalRevenue(self) * Store.getSalesTaxPercentage(self))
     
     def calculate_total_sales(self):
-        return(getTotalRevenue() + calculate_total_sales())
+        return(GroceryStore.getTotalRevenue(self) + GroceryStore.calculate_total_sales_tax(self))

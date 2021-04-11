@@ -45,21 +45,23 @@ class Restaurant(Store):
         self.__price_per_person = price_per_person
 
     def seat_patrons(self, people_to_sit):
-        if (people_to_sit + getCurrentOccupancy()) > getMaxOccupancy():
+        if (people_to_sit + Restaurant.getCurrentOccupancy(self)) > Restaurant.getMaxOccupancy(self):
             print("We are at a capacity, we appreciate your patience")
             return False
         else:
-            setCurrentOccupancy(people_to_sit + getCurrentOccupancy())
-            print("Welcome to", Store.getName())
+            Restaurant.setCurrentOccupancy(self, people_to_sit + Restaurant.getCurrentOccupancy(self))
+            print("Welcome to", Store.getName(self))
             return True
 
     def serve_patrons(self, people_to_serve):
-        setPeopleServed(people_to_serve + getPeopleServed())
-        return "People Served:", getPeopleServed()
+        Restaurant.setPeopleServed(self, people_to_serve + Restaurant.getPeopleServed(self))
+        print("People Served:", Restaurant.getPeopleServed(self))
+        return Restaurant.getPeopleServed(self)
 
     def checkout_patrons(self, people_to_checkout):
-        setCurrentOccupancy(getCurrentOccupancy() - people_to_checkout)
-        return "Current Occupancy:", getCurrentOccupancy()
+        Restaurant.setCurrentOccupancy(self, Restaurant.getCurrentOccupancy(self) - people_to_checkout)
+        print("People checked out:", Restaurant.getCurrentOccupancy(self))
+        return Restaurant.getCurrentOccupancy(self)
 
     def calculate_total_sales_tax(self):
         return((Restaurant.getPricePerPerson(self) * Restaurant.getPeopleServed(self)) * Store.getSalesTaxPercentage(self))

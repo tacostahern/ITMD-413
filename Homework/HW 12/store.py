@@ -9,13 +9,14 @@ returns True if the store is open and False if the store is closed, and 2
 abstract methods: calculate_total_sales_tax, calculate_total_sales
 '''
 
+from abc import ABC, abstractmethod
 class Store(ABC):
 
     def __init__(self, name, address, availability, sales_tax_percentage):
-        setName(name)
-        setAddress(address)
-        setAvailability(availability)
-        setSalesTaxPercentage(sales_tax_percentage)
+        self.__store_name = name
+        self.__store_address = address
+        self.__store_availability = availability
+        self.__store_sales_tax_percentage = sales_tax_percentage
 
     def getName(self):
         return(self.__store_name)
@@ -42,7 +43,7 @@ class Store(ABC):
         self.__store_sales_tax_percentage = sales_tax_percentage
 
     def is_store_open(self):
-        if getAvailability() == "open":
+        if self.__store_availability == "open":
             return True
         else:
             return False

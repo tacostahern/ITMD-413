@@ -13,9 +13,9 @@ from store import *
 class GroceryStore(Store):
 
     def __init__(self, name, address, availability, sales_tax_percentage, total_revenue, grocery_store_type):
-        setTotalRevenue(total_revenue)
-        setGroceryStoreType(grocery_store_type)
-        Store.__init__(name, address, availability, sales_tax_percentage)
+        self.__total_revenue = total_revenue
+        self.__grocery_store_type = grocery_store_type
+        Store.__init__(self, name, address, availability, sales_tax_percentage)
 
     def getTotalRevenue(self):
         return(self.__total_revenue)
@@ -31,3 +31,9 @@ class GroceryStore(Store):
 
     def sell_item(self, quantity, price):
         setTotalRevenue(getTotalRevenue() + (quantity * price))
+
+    def calculate_total_sales_tax(self):
+        return(getTotalRevenue() * Store.getSalesTaxPercentage())
+    
+    def calculate_total_sales(self):
+        return(getTotalRevenue() + calculate_total_sales())

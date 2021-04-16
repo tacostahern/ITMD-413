@@ -6,6 +6,9 @@ Coin to create a GUI that allows users to enter each coin they have in their pos
 and then compute and display the dollar and cents value of these coins. 
 '''
 
+from tkinter import *
+from tkinter import ttk
+
 class Coin():
     def __init__(self, quarter, dime, nickel, penny, half_dollar, dollar):
         self.__quarter = quarter
@@ -66,4 +69,17 @@ class Coin():
     def computeHalfDollars(self):
         return self.__half_dollar * .5
 
-    
+def main():
+    window = Tk()
+    window.title("Change Counter")
+    window.geometry("800x400")
+
+    Label(window, justify = LEFT, text = "Enter the number of each coin type and click compute:", width = 20, wraplength = 150).grid(row = 0, column = 0, sticky = W)
+    quarters = Label(window, text = "Quarters:").grid(row = 1, column = 0, sticky = E)
+    quartersInput = Entry(window).grid(row = 1, column = 1, sticky = W)
+    Label(window, justify = LEFT, text = "Quarter value: $").grid(row = 1, column = 2)
+    quartersValue = Entry(window).grid(row = 1, column = 3, sticky = W)
+
+    window.mainloop()
+
+main()

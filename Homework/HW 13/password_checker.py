@@ -13,6 +13,10 @@ def main():
     print(does_password_pass_check("1asdasda"))
     print(does_password_pass_check("asdasdasd2asdasdwa"))
     print(does_password_pass_check("asdasdasdasdasdwa1"))
+    print(does_password_pass_check("/-+*-*/&^#(@^&$"))
+    print(does_password_pass_check("/-+*-*/&1^#(@^&$"))
+    print(does_password_pass_check("1/-+*-*/&^#(@^&$"))
+    print(does_password_pass_check("/-+*-*/&^#(@^&$1"))
 
 def does_password_pass_check(password):
     if password[0].isdigit():

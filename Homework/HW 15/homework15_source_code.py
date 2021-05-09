@@ -51,4 +51,33 @@ def ex17_2():
 
     print(pd.read_sql("SELECT isbn, title, edition, copyright FROM titles WHERE title NOT LIKE '%How to Program' ORDER BY title", connection))
 
+def ex17_1():
+    connection = sqlite3.connect('books.db')
+    pd.options.display.max_columns = 10
+
+    # a) Select all authors’ last names from the authors table in descending order
+    print(pd.read_sql('SELECT last FROM authors ORDER BY last DESC', connection))
+
+    # b) Select all book titles from the titles table in ascending order
+    print(pd.read_sql('SELECT title FROM titles ORDER BY title ASC', connection))
+
+    # c) Use an INNER JOIN to select all the books for a specific author. Include the title, copyright year and ISBN. Order the information alphabetically by title
+    print(pd.read_sql("SELECT t.title, t.isbn, t.copyright FROM titles t INNER JOIN author_ISBN a ON t.isbn = a.isbn ORDER BY title ASC", connection))
+
+    # d) Insert a new author into the authors table
+    cursor = connection.cursor()
+    cursor = cursor.execute("INSERT INTO authors (first, last) VALUES ('Tony', 'Acosta Hernandez')")
+    print(pd.read_sql('SELECT * FROM authors', connection, index_col=['id']))
+
+    # e) Insert a new title for an author. Remember that the book must have an entry in the author_ISBN table and an entry in the titles table
+    cursor = cursor.execute("INSERT INTO authors (first, last) VALUES ('Tony', 'Acosta Hernandez')")
+
+    cursor = cursor.execute("INSERT into titles (isbn, title, edition, copyright) VALUES (0123456789, 'I thought my life was a tragedy', 1, '2021')")
+    print(pd.read_sql('SELECT * FROM titles', connection))
+
+    cursor = cursor.execute("INSERT INTO author_ISBN (id, isbn) VALUES (7, 0123456789)")
+    print(pd.read_sql('SELECT * FROM author_isbn', connection))
+
+
 ex17_2()
+ex17_1()
